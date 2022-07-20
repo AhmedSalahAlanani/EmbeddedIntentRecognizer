@@ -2,12 +2,12 @@
 
 namespace embeddedIntentRecognizer
 {
-    bool TouchScreenInput::init()
+    bool TouchScreenInput::init() const
     {
         return false;
     }
 
-    void TouchScreenInput::waitForInput(std::string &receivedInput)
+    void TouchScreenInput::waitForInput(std::string &receivedInput) const
     {
     }
 
