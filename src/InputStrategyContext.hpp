@@ -11,7 +11,7 @@ namespace embeddedIntentRecognizer
     class InputStrategyContext
     {
     public:
-        bool init(SupportedInputs inputType, SupportedLanguages language) const;
+        bool init(SupportedLanguages language, SupportedInputs inputType) const;
         void waitForInput(std::string &receivedInput) const;
 
     private:

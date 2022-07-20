@@ -18,7 +18,7 @@ namespace embeddedIntentRecognizer
         }
         std::cout << "Configuration was loaded successfully.\n";
 
-        state = m_inputStartegyContext.init(applicationConfig.inputType, applicationConfig.language);
+        state = m_inputStartegyContext.init(applicationConfig.language, applicationConfig.inputType);
         if (!state)
         {
             std::cout << "Failed to initialize Input strategy.\n";

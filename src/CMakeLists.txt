@@ -24,6 +24,18 @@ set(EIR_SRCS
 # set include directory
 set(EIR_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src)
 
+# create configuration file for embedded intent recognizer
+configure_file(
+    ${Embedded_Intent_Recognizer_SOURCE_DIR}/config/intent-recognizer.cfg.in
+    ${Embedded_Intent_Recognizer_BINARY_DIR}/config/intent-recognizer.cfg
+    @ONLY
+    NEWLINE_STYLE UNIX
+)
+
+# set embedded intent recognizer configuration file path
+set(CFG_FILE "intent-recognizer.cfg")
+add_definitions("-DCONFIG_FILE_PATH=\"${Embedded_Intent_Recognizer_BINARY_DIR}/config/${CFG_FILE}\"")
+
 # add executable for the project
 add_executable(${TARGET_NAME}
     ${EIR_SRCS}

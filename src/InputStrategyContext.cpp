@@ -4,7 +4,7 @@
 
 namespace embeddedIntentRecognizer
 {
-    bool InputStrategyContext::init(SupportedInputs inputType, SupportedLanguages language) const
+    bool InputStrategyContext::init(SupportedLanguages language, SupportedInputs inputType) const
     {
         std::cout << "Initializing Input stratetgy..\n";
 

@@ -20,8 +20,8 @@ namespace embeddedIntentRecognizer
 
     typedef struct ApplicationConfig
     {
-        SupportedInputs inputType;
         SupportedLanguages language;
+        SupportedInputs inputType;
         bool cliOutput;
         bool touchScreenOutput;
         bool voiceOutput;
