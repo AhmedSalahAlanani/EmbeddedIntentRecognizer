@@ -6,6 +6,19 @@ set(TARGET_NAME "intent-recognizer")
 # set executable source files
 set(EIR_SRCS
     ${CMAKE_SOURCE_DIR}/src/main.cpp
+
+    ${CMAKE_SOURCE_DIR}/src/EmbeddedIntentRecognizer.cpp
+    ${CMAKE_SOURCE_DIR}/src/ConfigManager.cpp
+    ${CMAKE_SOURCE_DIR}/src/InputStrategyContext.cpp
+    ${CMAKE_SOURCE_DIR}/src/TextProcessor.cpp
+
+    ${CMAKE_SOURCE_DIR}/src/concrete-input-strategies/CliInput.cpp
+    ${CMAKE_SOURCE_DIR}/src/concrete-input-strategies/TouchScreenInput.cpp
+    ${CMAKE_SOURCE_DIR}/src/concrete-input-strategies/VoiceInput.cpp
+
+    ${CMAKE_SOURCE_DIR}/src/output-devices/CliOutput.cpp
+    ${CMAKE_SOURCE_DIR}/src/output-devices/TouchScreenOutput.cpp
+    ${CMAKE_SOURCE_DIR}/src/output-devices/VoiceOutput.cpp
 )
 
 # set include directory
