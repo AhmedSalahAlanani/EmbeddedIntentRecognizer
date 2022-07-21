@@ -1,11 +1,11 @@
 #ifndef VOICE_OUTPUT_HPP
 #define VOICE_OUTPUT_HPP
 
-#include "interfaces/ITextProcessorOutputObserver.hpp"
+#include "interfaces/IOutputDevice.hpp"
 
 namespace embeddedIntentRecognizer
 {
-    class VoiceOutput : public ITextProcessorOutputObserver
+    class VoiceOutput : public IOutputDevice
     {
     private:
         void onNewOutputReady(const std::string &textProcessorOutput) const override;
