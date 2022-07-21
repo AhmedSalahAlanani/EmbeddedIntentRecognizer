@@ -15,7 +15,7 @@ namespace embeddedIntentRecognizer
     {
     public:
         bool init();
-        bool run() const;
+        bool run();
 
     private:
         ConfigManager m_configManager;
