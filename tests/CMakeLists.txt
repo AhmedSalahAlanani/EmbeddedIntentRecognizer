@@ -6,7 +6,8 @@ set(TARGET_NAME "intent-recognizer-unit-tests")
 include(FetchContent)
 FetchContent_Declare(GTest
     QUIET
-    URL https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG        58d77fa8070e8cec2dc1ed015d66b454c8d78850 # release-1.12.1
 )
 
 # configure build of googletest
