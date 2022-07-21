@@ -16,6 +16,8 @@ set(EIR_SRCS
     ${CMAKE_SOURCE_DIR}/src/concrete-input-strategies/TouchScreenInput.cpp
     ${CMAKE_SOURCE_DIR}/src/concrete-input-strategies/VoiceInput.cpp
 
+    ${CMAKE_SOURCE_DIR}/src/concrete-input-language-strategies/CliEnglishInput.cpp
+
     ${CMAKE_SOURCE_DIR}/src/output-devices/CliOutput.cpp
     ${CMAKE_SOURCE_DIR}/src/output-devices/TouchScreenOutput.cpp
     ${CMAKE_SOURCE_DIR}/src/output-devices/VoiceOutput.cpp
