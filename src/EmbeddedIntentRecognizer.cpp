@@ -68,16 +68,17 @@ namespace embeddedIntentRecognizer
         return true;
     }
 
-    bool EmbeddedIntentRecognizer::run() const
+    bool EmbeddedIntentRecognizer::run()
     {
         std::cout << "Embedded Intent Recognizer has started..\n";
 
         // application logic will go here
         while (true)
         {
-            std::string receievdInput;
-            m_inputStartegyContext.waitForInput(receievdInput);
-            m_textProcessor.processText(receievdInput);
+            std::string input;
+            m_inputStartegyContext.waitForInput(input);
+            m_textProcessor.processText(input);
+            m_textProcessor.notifyOutputObservers();
         }
 
         return false;

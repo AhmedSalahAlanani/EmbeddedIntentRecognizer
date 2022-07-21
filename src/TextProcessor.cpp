@@ -15,7 +15,7 @@ namespace embeddedIntentRecognizer
     {
         m_observers.emplace_back(observer);
 
-        std::cout << "[INFO]: Current number of observers = " << m_observers.size() << "\n";
+        std::cout << "[DEBUG]: Current number of observers = " << m_observers.size() << "\n";
     }
 
     void TextProcessor::detach(ITextProcessorOutputObserver *observer)
@@ -30,8 +30,12 @@ namespace embeddedIntentRecognizer
         m_observers.erase(it);
     }
 
-    void TextProcessor::processText(const std::string &text) const
+    void TextProcessor::processText(const std::string &text)
     {
+        std::cout << "[WARNING]: Text Processor For now buffers the input to the output, this should be handled later\n";
+
+        // text processing shall go here
+        m_lastProcessedOutput = text;
     }
 
     void TextProcessor::notifyOutputObservers() const
