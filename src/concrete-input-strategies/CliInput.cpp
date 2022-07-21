@@ -16,7 +16,7 @@ namespace embeddedIntentRecognizer
         }
         case SupportedLanguages::DEUTSCH:
         {
-            std::cout << "[ERROR]: Input Language Deutsch is currently not supported.\n";
+            std::cout << "[ERROR]: Input Language Deutsch support is currently not implemented.\n";
             return false;
         }
         default:

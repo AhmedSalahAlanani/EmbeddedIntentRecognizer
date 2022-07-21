@@ -3,6 +3,13 @@
 
 #include "TextProcessor.hpp"
 
+namespace
+{
+    // supported commands
+    static constexpr char g_exitCommand[] = "Exit";
+
+} // anonymous namespace
+
 namespace embeddedIntentRecognizer
 {
     bool TextProcessor::init() const
@@ -30,9 +37,13 @@ namespace embeddedIntentRecognizer
         m_observers.erase(it);
     }
 
-    void TextProcessor::processText(const std::string &text)
+    void TextProcessor::processText(const std::string &text, InputTextType &inputType)
     {
-        std::cout << "[WARNING]: Text Processor For now buffers the input to the output, this should be handled later\n";
+        if (text == g_exitCommand)
+        {
+            inputType = InputTextType::EXIT_COMMAND;
+            return;
+        }
 
         // text processing shall go here
         m_lastProcessedOutput = text;

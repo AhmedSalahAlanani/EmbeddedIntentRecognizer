@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "common/Types.hpp"
 #include "interfaces/ITextProcessorOutputObserver.hpp"
 
 namespace embeddedIntentRecognizer
@@ -13,7 +14,7 @@ namespace embeddedIntentRecognizer
         bool init() const;
         void attach(ITextProcessorOutputObserver *observer);
         void detach(ITextProcessorOutputObserver *observer);
-        void processText(const std::string &text);
+        void processText(const std::string &text, InputTextType &inputType);
         void notifyOutputObservers() const;
 
     private:

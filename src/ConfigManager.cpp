@@ -7,21 +7,21 @@
 namespace
 {
     // language support
-    static constexpr char languageSupport[] = "Language Support";
-    static constexpr char english[] = "English";
-    static constexpr char deutsch[] = "Deutsch";
+    static constexpr char g_languageSupport[] = "Language Support";
+    static constexpr char g_english[] = "English";
+    static constexpr char g_deutsch[] = "Deutsch";
 
     // input devices
-    static constexpr char inputDevice[] = "Input Device";
-    static constexpr char cliInput[] = "CLI";
-    static constexpr char touchScreenInput[] = "Touch Screen";
-    static constexpr char voiceInput[] = "Voice Input";
+    static constexpr char g_inputDevice[] = "Input Device";
+    static constexpr char g_cliInput[] = "CLI";
+    static constexpr char g_touchScreenInput[] = "Touch Screen";
+    static constexpr char g_voiceInput[] = "Voice Input";
 
     // output devices
-    static constexpr char outputDevices[] = "Output Devices";
-    static constexpr char cliOutput[] = "CLI";
-    static constexpr char touchScreenOutput[] = "Touch Screen";
-    static constexpr char voiceOutput[] = "Voice Output";
+    static constexpr char g_outputDevices[] = "Output Devices";
+    static constexpr char g_cliOutput[] = "CLI";
+    static constexpr char g_touchScreenOutput[] = "Touch Screen";
+    static constexpr char g_voiceOutput[] = "Voice Output";
 
 } // anonymous namespace
 
@@ -57,7 +57,7 @@ namespace embeddedIntentRecognizer
         }
 
         // set language support
-        auto it = getMember(configFile, languageSupport);
+        auto it = getMember(configFile, g_languageSupport);
         if (it != configFile.MemberEnd() && it->value.IsString())
         {
             if (!fillLanguageConfiguration(it->value.GetString(), configuration.language))
@@ -69,7 +69,7 @@ namespace embeddedIntentRecognizer
         }
 
         // set input devices
-        it = getMember(configFile, inputDevice);
+        it = getMember(configFile, g_inputDevice);
         if (it != configFile.MemberEnd() && it->value.IsString())
         {
             if (!fillInputDeviceConfiguration(it->value.GetString(), configuration.inputType))
@@ -81,7 +81,7 @@ namespace embeddedIntentRecognizer
         }
 
         // set output devices
-        it = getMember(configFile, outputDevices);
+        it = getMember(configFile, g_outputDevices);
         if (it != configFile.MemberEnd() && it->value.IsArray())
         {
             if (!fillOutputDeviceConfiguration(it->value.GetArray(), configuration))
@@ -97,13 +97,13 @@ namespace embeddedIntentRecognizer
 
     bool ConfigManager::fillLanguageConfiguration(const std::string &inLanguage, SupportedLanguages &language) const
     {
-        if (inLanguage == english)
+        if (inLanguage == g_english)
         {
             language = SupportedLanguages::ENGLISH;
             return true;
         }
 
-        if (inLanguage == deutsch)
+        if (inLanguage == g_deutsch)
         {
             language = SupportedLanguages::DEUTSCH;
             return true;
@@ -114,19 +114,19 @@ namespace embeddedIntentRecognizer
 
     bool ConfigManager::fillInputDeviceConfiguration(const std::string &inInputDevice, SupportedInputs &inputDevice) const
     {
-        if (inInputDevice == cliInput)
+        if (inInputDevice == g_cliInput)
         {
             inputDevice = SupportedInputs::CLI_INPUT;
             return true;
         }
 
-        if (inInputDevice == touchScreenInput)
+        if (inInputDevice == g_touchScreenInput)
         {
             inputDevice = SupportedInputs::TOUCH_SCREEN_INPUT;
             return true;
         }
 
-        if (inInputDevice == voiceInput)
+        if (inInputDevice == g_voiceInput)
         {
             inputDevice = SupportedInputs::VOICE_INPUT;
             return true;
@@ -143,17 +143,17 @@ namespace embeddedIntentRecognizer
             if (it->IsString())
             {
                 const std::string &outDevice = it->GetString();
-                if (outDevice == cliOutput)
+                if (outDevice == g_cliOutput)
                 {
                     configuration.cliOutput = foundOutputDevice = true;
                     continue;
                 }
-                if (outDevice == touchScreenOutput)
+                if (outDevice == g_touchScreenOutput)
                 {
                     configuration.touchScreenOutput = foundOutputDevice = true;
                     continue;
                 }
-                if (outDevice == voiceOutput)
+                if (outDevice == g_voiceOutput)
                 {
                     configuration.voiceOutput = foundOutputDevice = true;
                     continue;

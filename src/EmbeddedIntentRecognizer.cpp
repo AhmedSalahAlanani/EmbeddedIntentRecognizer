@@ -19,26 +19,26 @@ namespace embeddedIntentRecognizer
         bool state = m_configManager.loadConfig(applicationConfig);
         if (!state)
         {
-            std::cout << "Failed to load Configuration.\n";
+            std::cout << "[ERROR]: Failed to load Configuration.\n";
             return false;
         }
-        std::cout << "Configuration was loaded successfully.\n";
+        std::cout << "[INFO]: Configuration was loaded successfully.\n";
 
         state = m_inputStartegyContext.init(applicationConfig.language, applicationConfig.inputType);
         if (!state)
         {
-            std::cout << "Failed to initialize Input strategy.\n";
+            std::cout << "[ERROR]: Failed to initialize Input strategy.\n";
             return false;
         }
-        std::cout << "Initializing Input Strategy was successful.\n";
+        std::cout << "[INFO]: Initializing Input Strategy was successful.\n";
 
         state = m_textProcessor.init();
         if (!state)
         {
-            std::cout << "Failed to initialize Input Text Processor.\n";
+            std::cout << "[ERROR]: Failed to initialize Input Text Processor.\n";
             return false;
         }
-        std::cout << "Initializing Input Text Processor was successful.\n";
+        std::cout << "[INFO]: Initializing Input Text Processor was successful.\n";
 
         // add output types  chosen from configuration as observers to text processor
         if (applicationConfig.cliOutput)
@@ -67,22 +67,41 @@ namespace embeddedIntentRecognizer
             }
         }
 
-        std::cout << "Initialization was successful.\n";
+        std::cout << "[INFO]: Initialization was successful.\n";
         clearScreen();
         return true;
     }
 
     bool EmbeddedIntentRecognizer::run()
     {
-        std::cout << "Embedded Intent Recognizer has started..\n";
+        std::cout << "[INFO]: Embedded Intent Recognizer has started..\n";
 
         // application logic will go here
         while (true)
         {
             std::string input;
+            InputTextType inputType;
             m_inputStartegyContext.waitForInput(input);
-            m_textProcessor.processText(input);
-            m_textProcessor.notifyOutputObservers();
+
+            m_textProcessor.processText(input, inputType);
+            switch (inputType)
+            {
+            case InputTextType::TEXT:
+            {
+                m_textProcessor.notifyOutputObservers();
+                break;
+            }
+            case InputTextType::EXIT_COMMAND:
+            {
+                std::cout << "[INFO]: Exit command was received.\n";
+                return true;
+            }
+            default:
+            {
+                std::cout << "[ERROR]: Received unrecognized input.\n";
+                return false;
+            }
+            }
         }
 
         return false;
