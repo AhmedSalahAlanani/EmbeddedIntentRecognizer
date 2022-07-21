@@ -1,4 +1,7 @@
 #include <iostream>
+#include <thread>
+#include <chrono>
+#include <cstdlib>
 
 #include "common/Types.hpp"
 #include "output-devices/CliOutput.hpp"
@@ -65,6 +68,7 @@ namespace embeddedIntentRecognizer
         }
 
         std::cout << "Initialization was successful.\n";
+        clearScreen();
         return true;
     }
 
@@ -82,6 +86,17 @@ namespace embeddedIntentRecognizer
         }
 
         return false;
+    }
+
+    inline void EmbeddedIntentRecognizer::clearScreen()
+    {
+        std::this_thread::sleep_for(std::chrono::seconds{2U});
+
+#if (defined(unix) || defined(__unix) || defined(__unix__)) // Linux
+        std::system("clear");
+#elif (defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__)) // Windows
+        std::system("cls")
+#endif
     }
 
 } // namespace embeddedIntentRecognizer

@@ -22,6 +22,8 @@ namespace embeddedIntentRecognizer
         InputStrategyContext m_inputStartegyContext;
         TextProcessor m_textProcessor;
         std::vector<std::unique_ptr<IOutputDevice>> m_outputDevices;
+
+        static inline void clearScreen();
     };
 
 } // namespace embeddedIntentRecognizer
