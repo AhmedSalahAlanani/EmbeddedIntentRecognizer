@@ -1,11 +1,11 @@
 #ifndef CLI_OUTPUT_HPP
 #define CLI_OUTPUT_HPP
 
-#include "interfaces/ITextProcessorOutputObserver.hpp"
+#include "interfaces/IOutputDevice.hpp"
 
 namespace embeddedIntentRecognizer
 {
-    class CliOutput : public ITextProcessorOutputObserver
+    class CliOutput : public IOutputDevice
     {
     private:
         void onNewOutputReady(const std::string &textProcessorOutput) const override;

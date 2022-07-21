@@ -1,9 +1,12 @@
+#include <iostream>
+
 #include "VoiceInput.hpp"
 
 namespace embeddedIntentRecognizer
 {
-    bool VoiceInput::init() const
+    bool VoiceInput::init(SupportedLanguages language)
     {
+        std::cout << "[ERROR]: Voice Input is currently not supported.\n";
         return false;
     }
 

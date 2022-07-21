@@ -1,11 +1,14 @@
 #include <iostream>
 
 #include "common/Types.hpp"
+#include "output-devices/CliOutput.hpp"
+#include "output-devices/TouchScreenOutput.hpp"
+#include "output-devices/VoiceOutput.hpp"
 #include "EmbeddedIntentRecognizer.hpp"
 
 namespace embeddedIntentRecognizer
 {
-    bool EmbeddedIntentRecognizer::init() const
+    bool EmbeddedIntentRecognizer::init()
     {
         std::cout << "Starting Application..\n";
 
@@ -35,6 +38,31 @@ namespace embeddedIntentRecognizer
         std::cout << "Initializing Input Text Processor was successful.\n";
 
         // add output types  chosen from configuration as observers to text processor
+        if (applicationConfig.cliOutput)
+        {
+            m_outputDevices.emplace_back(std::make_unique<CliOutput>());
+        }
+        if (applicationConfig.touchScreenOutput)
+        {
+            m_outputDevices.emplace_back(std::make_unique<TouchScreenOutput>());
+        }
+        if (applicationConfig.voiceOutput)
+        {
+            m_outputDevices.emplace_back(std::make_unique<VoiceOutput>());
+        }
+
+        // add output devices as observers to the Text Processor
+        if (m_outputDevices.empty())
+        {
+            std::cout << "[WARNING]: None of the output devices were Enabled!\n";
+        }
+        else
+        {
+            for (const auto &outputDevice : m_outputDevices)
+            {
+                m_textProcessor.attach(outputDevice.get());
+            }
+        }
 
         std::cout << "Initialization was successful.\n";
         return true;
@@ -49,6 +77,7 @@ namespace embeddedIntentRecognizer
         {
             std::string receievdInput;
             m_inputStartegyContext.waitForInput(receievdInput);
+            m_textProcessor.processText(receievdInput);
         }
 
         return false;

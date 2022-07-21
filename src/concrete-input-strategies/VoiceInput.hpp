@@ -8,7 +8,7 @@ namespace embeddedIntentRecognizer
     class VoiceInput : public IInputStrategy
     {
     private:
-        bool init() const override;
+        bool init(SupportedLanguages language) override;
         void waitForInput(std::string &receivedInput) const override;
     };
 

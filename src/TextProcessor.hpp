@@ -13,6 +13,7 @@ namespace embeddedIntentRecognizer
         bool init() const;
         void attach(ITextProcessorOutputObserver *observer);
         void detach(ITextProcessorOutputObserver *observer);
+        void processText(const std::string &text) const;
         void notifyOutputObservers() const;
 
     private:

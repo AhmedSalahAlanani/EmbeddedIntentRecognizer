@@ -1,11 +1,11 @@
 #ifndef TOUCH_SCREEN_OUTPUT_HPP
 #define TOUCH_SCREEN_OUTPUT_HPP
 
-#include "interfaces/ITextProcessorOutputObserver.hpp"
+#include "interfaces/IOutputDevice.hpp"
 
 namespace embeddedIntentRecognizer
 {
-    class TouchScreenOutput : public ITextProcessorOutputObserver
+    class TouchScreenOutput : public IOutputDevice
     {
     private:
         void onNewOutputReady(const std::string &textProcessorOutput) const override;
