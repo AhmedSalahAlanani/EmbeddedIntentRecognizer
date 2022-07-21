@@ -137,7 +137,7 @@ namespace embeddedIntentRecognizer
 
     bool ConfigManager::fillOutputDeviceConfiguration(const rapidjson::Value::ConstArray &outDevices, ApplicationConfig &configuration) const
     {
-        bool foundData = false;
+        bool foundOutputDevice = false;
         for (auto it = outDevices.begin(); it != outDevices.end(); it++)
         {
             if (it->IsString())
@@ -145,23 +145,23 @@ namespace embeddedIntentRecognizer
                 const std::string &outDevice = it->GetString();
                 if (outDevice == cliOutput)
                 {
-                    configuration.cliOutput = foundData = true;
+                    configuration.cliOutput = foundOutputDevice = true;
                     continue;
                 }
                 if (outDevice == touchScreenOutput)
                 {
-                    configuration.touchScreenOutput = foundData = true;
+                    configuration.touchScreenOutput = foundOutputDevice = true;
                     continue;
                 }
                 if (outDevice == voiceOutput)
                 {
-                    configuration.voiceOutput = foundData = true;
+                    configuration.voiceOutput = foundOutputDevice = true;
                     continue;
                 }
             }
         }
 
-        return foundData;
+        return foundOutputDevice;
     }
 
     inline rapidjson::Value::ConstMemberIterator ConfigManager::getMember(const rapidjson::Value &itrValue,
