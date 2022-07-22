@@ -32,9 +32,24 @@ namespace embeddedIntentRecognizer_unit_test
         TextProcessor textProcessor;
     };
 
-    TEST_F(TextProcessorTest, TestCase_1)
+    TEST_F(TextProcessorTest, Test_EnglishSupport)
     {
-        ASSERT_TRUE(true);
+        ApplicationConfig appConfig;
+        appConfig.language = SupportedLanguages::ENGLISH;
+        EXPECT_TRUE(textProcessor.init(appConfig.language));
+    }
+
+    TEST_F(TextProcessorTest, Test_DeutschSupport)
+    {
+        ApplicationConfig appConfig;
+        appConfig.language = SupportedLanguages::DEUTSCH;
+        EXPECT_FALSE(textProcessor.init(appConfig.language));
+    }
+
+    TEST_F(TextProcessorTest, Test_UnknownLanguageSupport)
+    {
+        ApplicationConfig appConfig;
+        EXPECT_FALSE(textProcessor.init(appConfig.language));
     }
 
 } // namespace embeddedIntentRecognizer_unit_test
