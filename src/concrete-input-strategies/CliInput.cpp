@@ -32,7 +32,7 @@ namespace embeddedIntentRecognizer
             return false;
         }
 
-        std::cout << "Input Language was set successfully.\n";
+        std::cout << "[VERBOSE]: Input Language was set successfully.\n";
         return true;
     }
 

@@ -13,7 +13,7 @@ namespace embeddedIntentRecognizer
 {
     bool EmbeddedIntentRecognizer::init()
     {
-        std::cout << "Starting Application..\n";
+        std::cout << "[INFO]: Starting Application..\n";
 
         ApplicationConfig applicationConfig;
         bool state = m_configManager.loadConfig(applicationConfig);
@@ -22,7 +22,7 @@ namespace embeddedIntentRecognizer
             std::cout << "[ERROR]: Failed to load Configuration.\n";
             return false;
         }
-        std::cout << "[INFO]: Configuration was loaded successfully.\n";
+        std::cout << "[VERBOSE]: Configuration was loaded successfully.\n";
 
         state = m_inputStartegyContext.init(applicationConfig.language, applicationConfig.inputType);
         if (!state)
@@ -30,9 +30,9 @@ namespace embeddedIntentRecognizer
             std::cout << "[ERROR]: Failed to initialize Input strategy.\n";
             return false;
         }
-        std::cout << "[INFO]: Initializing Input Strategy was successful.\n";
+        std::cout << "[VERBOSE]: Initializing Input Strategy was successful.\n";
 
-        state = m_textProcessor.init();
+        state = m_textProcessor.init(applicationConfig.language);
         if (!state)
         {
             std::cout << "[ERROR]: Failed to initialize Input Text Processor.\n";
@@ -41,31 +41,7 @@ namespace embeddedIntentRecognizer
         std::cout << "[INFO]: Initializing Input Text Processor was successful.\n";
 
         // add output types  chosen from configuration as observers to text processor
-        if (applicationConfig.cliOutput)
-        {
-            m_outputDevices.emplace_back(std::make_unique<CliOutput>());
-        }
-        if (applicationConfig.touchScreenOutput)
-        {
-            m_outputDevices.emplace_back(std::make_unique<TouchScreenOutput>());
-        }
-        if (applicationConfig.voiceOutput)
-        {
-            m_outputDevices.emplace_back(std::make_unique<VoiceOutput>());
-        }
-
-        // add output devices as observers to the Text Processor
-        if (m_outputDevices.empty())
-        {
-            std::cout << "[WARNING]: None of the output devices were Enabled!\n";
-        }
-        else
-        {
-            for (const auto &outputDevice : m_outputDevices)
-            {
-                m_textProcessor.attach(outputDevice.get());
-            }
-        }
+        addOutputDevices(applicationConfig);
 
         std::cout << "[INFO]: Initialization was successful.\n";
         clearScreen();
@@ -105,6 +81,48 @@ namespace embeddedIntentRecognizer
         }
 
         return false;
+    }
+
+    void EmbeddedIntentRecognizer::addOutputDevices(const ApplicationConfig &applicationConfig)
+    {
+        std::unique_ptr<IOutputDevice> outputDevicePtr;
+        if (applicationConfig.cliOutput)
+        {
+            outputDevicePtr = std::make_unique<CliOutput>();
+            if (outputDevicePtr->init(applicationConfig.language))
+            {
+                m_outputDevices.emplace_back(std::move(outputDevicePtr));
+            }
+        }
+        if (applicationConfig.touchScreenOutput)
+        {
+            outputDevicePtr = std::make_unique<TouchScreenOutput>();
+            if (outputDevicePtr->init(applicationConfig.language))
+            {
+                m_outputDevices.emplace_back(std::move(outputDevicePtr));
+            }
+        }
+        if (applicationConfig.voiceOutput)
+        {
+            outputDevicePtr = std::make_unique<VoiceOutput>();
+            if (outputDevicePtr->init(applicationConfig.language))
+            {
+                m_outputDevices.emplace_back(std::move(outputDevicePtr));
+            }
+        }
+
+        // add output devices as observers to the Text Processor
+        if (m_outputDevices.empty())
+        {
+            std::cout << "[WARNING]: None of the output devices were Enabled!\n";
+        }
+        else
+        {
+            for (const auto &outputDevice : m_outputDevices)
+            {
+                m_textProcessor.attach(outputDevice.get());
+            }
+        }
     }
 
     inline void EmbeddedIntentRecognizer::clearScreen()

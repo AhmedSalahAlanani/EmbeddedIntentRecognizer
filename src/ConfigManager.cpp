@@ -6,6 +6,9 @@
 
 namespace
 {
+    // configuration file path
+    static constexpr char g_configFilePath[] = CONFIG_FILE_PATH;
+
     // language support
     static constexpr char g_languageSupport[] = "Language Support";
     static constexpr char g_english[] = "English";
@@ -29,23 +32,23 @@ namespace embeddedIntentRecognizer
 {
     bool ConfigManager::loadConfig(ApplicationConfig &configuration) const
     {
-        std::cout << "Loading Application Configuration..\n";
+        std::cout << "[INFO]: Loading Application Configuration..\n";
 
         const bool state = readConfig(configuration);
         if (!state)
         {
-            std::cout << "Failed to load Application Configuration.\n";
+            std::cout << "[ERROR]: Failed to load Application Configuration.\n";
             return false;
         }
 
-        std::cout << "Reading Application Configuration was successful.\n";
+        std::cout << "[VERBOSE]: Reading Application Configuration was successful.\n";
         return true;
     }
 
     bool ConfigManager::readConfig(ApplicationConfig &configuration) const
     {
         std::ostringstream documentBuffer;
-        std::ifstream file{CONFIG_FILE_PATH};
+        std::ifstream file{g_configFilePath};
         documentBuffer << file.rdbuf();
 
         rapidjson::Document configFile;
@@ -65,7 +68,7 @@ namespace embeddedIntentRecognizer
                 std::cout << "[ERROR]: Failed to set Language.\n";
                 return false;
             }
-            std::cout << "Language was set successfully." << std::endl;
+            std::cout << "[VERBOSE]: Language was set successfully." << std::endl;
         }
 
         // set input devices
@@ -77,7 +80,7 @@ namespace embeddedIntentRecognizer
                 std::cout << "[ERROR]: Failed to set Input Device.\n";
                 return false;
             }
-            std::cout << "Input Device was set successfully." << std::endl;
+            std::cout << "[VERBOSE]: Input Device was set successfully." << std::endl;
         }
 
         // set output devices
@@ -89,7 +92,7 @@ namespace embeddedIntentRecognizer
                 std::cout << "[ERROR]: Failed to set Output Device.\n";
                 return false;
             }
-            std::cout << "Output Devices were set successfully." << std::endl;
+            std::cout << "[VERBOSE]: Output Devices were set successfully." << std::endl;
         }
 
         return true;

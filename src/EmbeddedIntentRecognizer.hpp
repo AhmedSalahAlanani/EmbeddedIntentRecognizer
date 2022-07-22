@@ -23,6 +23,7 @@ namespace embeddedIntentRecognizer
         TextProcessor m_textProcessor;
         std::vector<std::unique_ptr<IOutputDevice>> m_outputDevices;
 
+        void addOutputDevices(const ApplicationConfig &applicationConfig);
         static inline void clearScreen();
     };
 
