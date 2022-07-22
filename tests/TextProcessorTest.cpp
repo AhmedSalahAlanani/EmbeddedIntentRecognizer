@@ -29,18 +29,18 @@ namespace embeddedIntentRecognizer_unit_test
     TEST_F(TextProcessorInitializationTest, Test_EnglishSupport)
     {
         appConfig.language = SupportedLanguages::ENGLISH;
-        EXPECT_TRUE(textProcessor.init(appConfig.language));
+        EXPECT_TRUE(textProcessor.init(appConfig));
     }
 
     TEST_F(TextProcessorInitializationTest, Test_DeutschSupport)
     {
         appConfig.language = SupportedLanguages::DEUTSCH;
-        EXPECT_FALSE(textProcessor.init(appConfig.language));
+        EXPECT_FALSE(textProcessor.init(appConfig));
     }
 
     TEST_F(TextProcessorInitializationTest, Test_UnknownLanguageSupport)
     {
-        EXPECT_FALSE(textProcessor.init(appConfig.language));
+        EXPECT_FALSE(textProcessor.init(appConfig));
     }
 
     class TextProcessorProcessTextTest : public ::testing::Test
@@ -51,7 +51,7 @@ namespace embeddedIntentRecognizer_unit_test
 
         void SetUp() override
         {
-            textProcessor.init(SupportedLanguages::ENGLISH);
+            textProcessor.init({SupportedLanguages::ENGLISH});
         }
 
         void TearDown() override {}
@@ -92,7 +92,7 @@ namespace embeddedIntentRecognizer_unit_test
 
         void SetUp() override
         {
-            textProcessor.init(SupportedLanguages::ENGLISH);
+            textProcessor.init({SupportedLanguages::ENGLISH});
 
             m_stubTextobserver = std::make_unique<StubTextProcessorOutputObserver>();
             textProcessor.attach(m_stubTextobserver.get());
