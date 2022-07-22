@@ -24,7 +24,7 @@ namespace embeddedIntentRecognizer_unit_test
 
     TEST_F(EmbeddedIntentRecognizerTest, TestCase_1)
     {
-        ASSERT_TRUE(true);
+        EXPECT_TRUE(embeddedIntentRecognizer.init());
     }
 
 } // namespace embeddedIntentRecognizer_unit_test
