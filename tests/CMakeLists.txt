@@ -62,6 +62,7 @@ set(EIR_TEST_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/TextProcessorTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/ConfigManagerTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/InputStrategiesTest.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/OutputDevicesTest.cpp
 
     ${CMAKE_SOURCE_DIR}/src/EmbeddedIntentRecognizer.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigManager.cpp
