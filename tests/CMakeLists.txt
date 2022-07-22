@@ -7,7 +7,7 @@ include(FetchContent)
 FetchContent_Declare(GTest
     QUIET
     GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG        58d77fa8070e8cec2dc1ed015d66b454c8d78850 # release-1.12.1
+    GIT_TAG 58d77fa8070e8cec2dc1ed015d66b454c8d78850 # release-1.12.1
 )
 
 # configure build of googletest
@@ -18,6 +18,21 @@ FetchContent_MakeAvailable(GTest)
 # set embedded intent recognizer configuration file path
 set(CFG_FILE "intent-recognizer.cfg")
 add_definitions("-DCONFIG_FILE_PATH=\"${Embedded_Intent_Recognizer_BINARY_DIR}/config/${CFG_FILE}\"")
+
+# set embedded intent recognizer dataset files' path
+set(DATA_SET_1 "data-set1")
+set(DATA_SET_2 "data-set2")
+set(DATA_SET_3 "data-set3")
+set(DATA_SET_4 "data-set4")
+set(DATA_SET_4 "data-set5")
+
+add_definitions(
+    "-DENGLISH_DATA_SET1_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_1}\""
+    "-DENGLISH_DATA_SET2_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_2}\""
+    "-DENGLISH_DATA_SET3_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_3}\""
+    "-DENGLISH_DATA_SET4_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_4}\""
+    "-DENGLISH_DATA_SET5_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_5}\""
+)
 
 # set executable source files
 set(EIR_TEST_SRCS
@@ -35,9 +50,13 @@ set(EIR_TEST_SRCS
 
     ${CMAKE_SOURCE_DIR}/src/concrete-input-language-strategies/CliEnglishInput.cpp
 
+    ${CMAKE_SOURCE_DIR}/src/intent-recognition-models/EnglishLanguageModel.cpp
+
     ${CMAKE_SOURCE_DIR}/src/output-devices/CliOutput.cpp
     ${CMAKE_SOURCE_DIR}/src/output-devices/TouchScreenOutput.cpp
     ${CMAKE_SOURCE_DIR}/src/output-devices/VoiceOutput.cpp
+
+    ${CMAKE_SOURCE_DIR}/src/concrete-output-language-strategies/CliEnglishOutput.cpp
 )
 
 # set include directory

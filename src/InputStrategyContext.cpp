@@ -9,7 +9,7 @@ namespace embeddedIntentRecognizer
 {
     bool InputStrategyContext::init(SupportedLanguages language, SupportedInputs inputType)
     {
-        std::cout << "Initializing Input stratetgy..\n";
+        std::cout << "[INFO]: Initializing Input stratetgy..\n";
 
         switch (inputType)
         {
@@ -48,7 +48,7 @@ namespace embeddedIntentRecognizer
             return false;
         }
 
-        std::cout << "Input strategy was set successfully.\n";
+        std::cout << "[VERBOSE]: Input strategy was set successfully.\n";
         return true;
     }
 

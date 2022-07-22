@@ -9,6 +9,7 @@ namespace embeddedIntentRecognizer
     {
     public:
         virtual ~IOutputDevice() = default;
+        virtual bool init(SupportedLanguages language) = 0;
     };
 
 } // namespace embeddedIntentRecognizer

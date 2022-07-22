@@ -1,13 +1,50 @@
 #include <iostream>
 #include <algorithm>
 
+#include "intent-recognition-models/EnglishLanguageModel.hpp"
 #include "TextProcessor.hpp"
+
+namespace
+{
+    // supported commands
+    static constexpr char g_exitCommand[] = "Exit";
+    static constexpr char g_quitCommand[] = "Quit";
+
+} // anonymous namespace
 
 namespace embeddedIntentRecognizer
 {
-    bool TextProcessor::init() const
+    bool TextProcessor::init(SupportedLanguages language)
     {
-        std::cout << "[WARNING]: Text Processor Initialization was bypassed for now, should be handled later\n";
+        std::cout << "[INFO]: Initializing Text Processor..\n";
+
+        switch (language)
+        {
+        case SupportedLanguages::ENGLISH:
+        {
+            m_intentRecognitionModel = std::make_unique<EnglishLanguageModel>();
+            break;
+        }
+        case SupportedLanguages::DEUTSCH:
+        {
+            std::cout << "[ERROR]: Model for Language Deutsch is currently not supported.\n";
+            return false;
+        }
+        default:
+        {
+            std::cout << "[ERROR]: Received Unknown Input Language!.\n";
+            return false;
+        }
+        }
+
+        const bool state = m_intentRecognitionModel->loadDataSet();
+        if (!state)
+        {
+            std::cout << "[ERROR]: Failed to load Data Set for the selected Model!.\n";
+            return false;
+        }
+
+        std::cout << "[INFO]: Text Processor was initialized successfully.\n";
         return true;
     }
 
@@ -30,12 +67,15 @@ namespace embeddedIntentRecognizer
         m_observers.erase(it);
     }
 
-    void TextProcessor::processText(const std::string &text)
+    void TextProcessor::processText(const std::string &text, InputTextType &inputType)
     {
-        std::cout << "[WARNING]: Text Processor For now buffers the input to the output, this should be handled later\n";
+        if (text == g_exitCommand || text == g_quitCommand)
+        {
+            inputType = InputTextType::EXIT_COMMAND;
+            return;
+        }
 
-        // text processing shall go here
-        m_lastProcessedOutput = text;
+        m_intentRecognitionModel->getIntent(text, m_lastProcessedOutput);
     }
 
     void TextProcessor::notifyOutputObservers() const
@@ -44,11 +84,6 @@ namespace embeddedIntentRecognizer
         {
             observer->onNewOutputReady(m_lastProcessedOutput);
         }
-    }
-
-    bool TextProcessor::loadDataSet() const
-    {
-        return false;
     }
 
 } // namespace embeddedIntentRecognizer

@@ -10,12 +10,21 @@ namespace embeddedIntentRecognizer
         CLI_INPUT = 0U,
         TOUCH_SCREEN_INPUT = 1U,
         VOICE_INPUT = 2U,
+        // other supported input types can be added here
     };
 
     enum class SupportedLanguages : uint8_t
     {
         ENGLISH = 0U,
         DEUTSCH = 1U,
+        // other languages can be added here
+    };
+
+    enum class InputTextType : uint8_t
+    {
+        TEXT = 0U,
+        EXIT_COMMAND = 1U,
+        // other commands can be added here
     };
 
     typedef struct ApplicationConfig
