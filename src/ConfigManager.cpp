@@ -6,9 +6,6 @@
 
 namespace
 {
-    // configuration file path
-    static constexpr char g_configFilePath[] = CONFIG_FILE_PATH;
-
     // language support
     static constexpr char g_languageSupport[] = "Language Support";
     static constexpr char g_english[] = "English";
@@ -30,11 +27,11 @@ namespace
 
 namespace embeddedIntentRecognizer
 {
-    bool ConfigManager::loadConfig(ApplicationConfig &configuration) const
+    bool ConfigManager::loadConfig(ApplicationConfig &configuration, const char configFilePath[]) const
     {
         std::cout << "[INFO]: Loading Application Configuration..\n";
 
-        const bool state = readConfig(configuration);
+        const bool state = readConfig(configuration, configFilePath);
         if (!state)
         {
             std::cout << "[ERROR]: Failed to load Application Configuration.\n";
@@ -45,10 +42,10 @@ namespace embeddedIntentRecognizer
         return true;
     }
 
-    bool ConfigManager::readConfig(ApplicationConfig &configuration) const
+    bool ConfigManager::readConfig(ApplicationConfig &configuration, const char configFilePath[]) const
     {
         std::ostringstream documentBuffer;
-        std::ifstream file{g_configFilePath};
+        std::ifstream file{configFilePath};
         documentBuffer << file.rdbuf();
 
         rapidjson::Document configFile;

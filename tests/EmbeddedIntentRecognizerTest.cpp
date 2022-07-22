@@ -13,21 +13,11 @@ namespace embeddedIntentRecognizer_unit_test
     class EmbeddedIntentRecognizerTest : public ::testing::Test
     {
     public:
-        EmbeddedIntentRecognizerTest()
-        {
-        }
+        EmbeddedIntentRecognizerTest() = default;
+        ~EmbeddedIntentRecognizerTest() override = default;
 
-        ~EmbeddedIntentRecognizerTest() override
-        {
-        }
-
-        void SetUp() override
-        {
-        }
-
-        void TearDown() override
-        {
-        }
+        void SetUp() override {}
+        void TearDown() override {}
 
         EmbeddedIntentRecognizer embeddedIntentRecognizer;
     };
