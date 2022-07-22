@@ -34,11 +34,33 @@ add_definitions(
     "-DENGLISH_DATA_SET5_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_5}\""
 )
 
+# define several configuration files for unit tests
+set(TEST_INVALID_FORMAT1_CFG_FILE "invalid-format1.cfg")
+set(TEST_INVALID_FORMAT2_CFG_FILE "invalid-format2.cfg")
+set(TEST_INVALID_FORMAT3_CFG_FILE "invalid-format3.cfg")
+set(TEST_INVALID_FORMAT4_CFG_FILE "invalid-format4.cfg")
+set(TEST_VALID_FORMAT1_CFG_FILE "valid-format1.cfg")
+set(TEST_VALID_FORMAT2_CFG_FILE "valid-format2.cfg")
+set(TEST_VALID_FORMAT3_CFG_FILE "valid-format3.cfg")
+set(TEST_VALID_FORMAT4_CFG_FILE "valid-format4.cfg")
+
+add_definitions(
+    "-DTEST_INVALID_FORMAT1_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_INVALID_FORMAT1_CFG_FILE}\""
+    "-DTEST_INVALID_FORMAT2_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_INVALID_FORMAT2_CFG_FILE}\""
+    "-DTEST_INVALID_FORMAT3_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_INVALID_FORMAT3_CFG_FILE}\""
+    "-DTEST_INVALID_FORMAT4_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_INVALID_FORMAT4_CFG_FILE}\""
+    "-DTEST_VALID_FORMAT1_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_VALID_FORMAT1_CFG_FILE}\""
+    "-DTEST_VALID_FORMAT2_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_VALID_FORMAT2_CFG_FILE}\""
+    "-DTEST_VALID_FORMAT3_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_VALID_FORMAT3_CFG_FILE}\""
+    "-DTEST_VALID_FORMAT4_FILE_PATH=\"${CMAKE_CURRENT_SOURCE_DIR}/test-artifacts/${TEST_VALID_FORMAT4_CFG_FILE}\""
+)
+
 # set executable source files
 set(EIR_TEST_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/EmbeddedIntentRecognizerTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/TextProcessorTest.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/ConfigManagerTest.cpp
 
     ${CMAKE_SOURCE_DIR}/src/EmbeddedIntentRecognizer.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigManager.cpp
