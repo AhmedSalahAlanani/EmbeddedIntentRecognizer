@@ -84,8 +84,8 @@ namespace embeddedIntentRecognizer_unit_test
         EXPECT_EQ(appConfig.language, SupportedLanguages::ENGLISH);
         EXPECT_EQ(appConfig.inputType, SupportedInputs::VOICE_INPUT);
         EXPECT_FALSE(appConfig.cliOutput);
-        EXPECT_FALSE(appConfig.touchScreenOutput);
-        EXPECT_TRUE(appConfig.voiceOutput);
+        EXPECT_TRUE(appConfig.touchScreenOutput);
+        EXPECT_FALSE(appConfig.voiceOutput);
     }
 
     TEST_F(ConfigManagerTest, Test_validFormatConfigFile4)
