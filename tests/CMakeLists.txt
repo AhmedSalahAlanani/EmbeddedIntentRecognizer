@@ -38,6 +38,7 @@ add_definitions(
 set(EIR_TEST_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/EmbeddedIntentRecognizerTest.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TextProcessorTest.cpp
 
     ${CMAKE_SOURCE_DIR}/src/EmbeddedIntentRecognizer.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigManager.cpp
