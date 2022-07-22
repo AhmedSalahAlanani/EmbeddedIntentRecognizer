@@ -9,7 +9,7 @@ namespace embeddedIntentRecognizer
     {
     private:
         bool init(SupportedLanguages language) override;
-        void onNewOutputReady(const std::string &textProcessorOutput) const override;
+        void onNewOutputReady(const std::string &textProcessorOutput) override;
     };
 
 } // namespace embeddedIntentRecognizer

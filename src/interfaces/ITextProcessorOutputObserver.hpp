@@ -9,7 +9,7 @@ namespace embeddedIntentRecognizer
     {
     public:
         virtual ~ITextProcessorOutputObserver() = default;
-        virtual void onNewOutputReady(const std::string &textProcessorOutput) const = 0;
+        virtual void onNewOutputReady(const std::string &textProcessorOutput) = 0;
     };
 
 } // namespace embeddedIntentRecognizer

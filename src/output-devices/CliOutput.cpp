@@ -37,7 +37,7 @@ namespace embeddedIntentRecognizer
         return true;
     }
 
-    void CliOutput::onNewOutputReady(const std::string &textProcessorOutput) const
+    void CliOutput::onNewOutputReady(const std::string &textProcessorOutput)
     {
         m_outputLanguageStrategy->convertTextToOutput(textProcessorOutput);
     }

@@ -14,7 +14,7 @@ namespace embeddedIntentRecognizer
         std::unique_ptr<IOutputLanguageStrategy> m_outputLanguageStrategy;
 
         bool init(SupportedLanguages language) override;
-        void onNewOutputReady(const std::string &textProcessorOutput) const override;
+        void onNewOutputReady(const std::string &textProcessorOutput) override;
     };
 
 } // namespace embeddedIntentRecognizer

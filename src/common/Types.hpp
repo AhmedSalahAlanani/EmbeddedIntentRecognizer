@@ -25,8 +25,8 @@ namespace embeddedIntentRecognizer
 
     enum class InputTextType : uint8_t
     {
-        TEXT = 0U,
-        EXIT_COMMAND = 1U,
+        EXIT_COMMAND = 0U,
+        NORMAL_TEXT = 1U,
         // other commands can be added here
         UNKNOWN = std::numeric_limits<uint8_t>::max()
     };
