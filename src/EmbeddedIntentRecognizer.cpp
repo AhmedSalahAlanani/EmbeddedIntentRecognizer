@@ -56,21 +56,21 @@ namespace embeddedIntentRecognizer
         while (true)
         {
             std::string input;
-            InputTextType inputType;
+            InputTextType inputType{InputTextType::UNKNOWN};
             m_inputStartegyContext.waitForInput(input);
 
             m_textProcessor.processText(input, inputType);
             switch (inputType)
             {
-            case InputTextType::TEXT:
-            {
-                m_textProcessor.notifyOutputObservers();
-                break;
-            }
             case InputTextType::EXIT_COMMAND:
             {
                 std::cout << "[INFO]: Exit command was received.\n";
                 return true;
+            }
+            case InputTextType::NORMAL_TEXT:
+            {
+                m_textProcessor.notifyOutputObservers();
+                break;
             }
             default:
             {

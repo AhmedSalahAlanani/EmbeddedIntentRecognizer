@@ -2,6 +2,7 @@
 #define TYPES_HPP
 
 #include <cstdint>
+#include <limits>
 
 namespace embeddedIntentRecognizer
 {
@@ -11,6 +12,7 @@ namespace embeddedIntentRecognizer
         TOUCH_SCREEN_INPUT = 1U,
         VOICE_INPUT = 2U,
         // other supported input types can be added here
+        UNKNOWN = std::numeric_limits<uint8_t>::max()
     };
 
     enum class SupportedLanguages : uint8_t
@@ -18,22 +20,24 @@ namespace embeddedIntentRecognizer
         ENGLISH = 0U,
         DEUTSCH = 1U,
         // other languages can be added here
+        UNKNOWN = std::numeric_limits<uint8_t>::max()
     };
 
     enum class InputTextType : uint8_t
     {
-        TEXT = 0U,
-        EXIT_COMMAND = 1U,
+        EXIT_COMMAND = 0U,
+        NORMAL_TEXT = 1U,
         // other commands can be added here
+        UNKNOWN = std::numeric_limits<uint8_t>::max()
     };
 
     typedef struct ApplicationConfig
     {
-        SupportedLanguages language;
-        SupportedInputs inputType;
-        bool cliOutput;
-        bool touchScreenOutput;
-        bool voiceOutput;
+        SupportedLanguages language{SupportedLanguages::UNKNOWN};
+        SupportedInputs inputType{SupportedInputs::UNKNOWN};
+        bool cliOutput{false};
+        bool touchScreenOutput{false};
+        bool voiceOutput{false};
     } ApplicationConfig;
 
 } // namespace embeddedIntentRecognizer

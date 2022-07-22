@@ -10,7 +10,7 @@ namespace embeddedIntentRecognizer
         return false;
     }
 
-    void TouchScreenOutput::onNewOutputReady(const std::string &textProcessorOutput) const
+    void TouchScreenOutput::onNewOutputReady(const std::string &textProcessorOutput)
     {
         std::cout << "[WARNING]: Touch Screen Output was enabled, but not currently supported!\n";
     }

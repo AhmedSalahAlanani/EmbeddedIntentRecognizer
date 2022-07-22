@@ -75,6 +75,7 @@ namespace embeddedIntentRecognizer
             return;
         }
 
+        inputType = InputTextType::NORMAL_TEXT;
         m_intentRecognitionModel->getIntent(text, m_lastProcessedOutput);
     }
 

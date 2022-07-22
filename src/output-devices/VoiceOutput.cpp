@@ -10,7 +10,7 @@ namespace embeddedIntentRecognizer
         return false;
     }
 
-    void VoiceOutput::onNewOutputReady(const std::string &textProcessorOutput) const
+    void VoiceOutput::onNewOutputReady(const std::string &textProcessorOutput)
     {
         std::cout << "[WARNING]: Voice Output was enabled, but not currently supported!\n";
     }

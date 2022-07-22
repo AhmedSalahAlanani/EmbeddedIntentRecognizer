@@ -24,7 +24,7 @@ set(DATA_SET_1 "data-set1")
 set(DATA_SET_2 "data-set2")
 set(DATA_SET_3 "data-set3")
 set(DATA_SET_4 "data-set4")
-set(DATA_SET_4 "data-set5")
+set(DATA_SET_5 "data-set5")
 
 add_definitions(
     "-DENGLISH_DATA_SET1_FILE_PATH=\"${CMAKE_SOURCE_DIR}/data/english-dataSet/${DATA_SET_1}\""
@@ -38,6 +38,7 @@ add_definitions(
 set(EIR_TEST_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/EmbeddedIntentRecognizerTest.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TextProcessorTest.cpp
 
     ${CMAKE_SOURCE_DIR}/src/EmbeddedIntentRecognizer.cpp
     ${CMAKE_SOURCE_DIR}/src/ConfigManager.cpp
