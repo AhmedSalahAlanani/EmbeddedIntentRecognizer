@@ -2,3 +2,8 @@
 (.+)(interesting fact)(.*)
 (.+)(exciting fact)(.*)
 (.+)(fact)(.*)
+(.+)(I know nothing about)(.*)
+(.+)(I do not know)(.*)
+(.+)(I don't know)(.*)
+(.+)(I did not know)(.*)
+(.+)(I didn't know)(.*)

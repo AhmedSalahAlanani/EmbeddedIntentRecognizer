@@ -129,8 +129,10 @@ namespace embeddedIntentRecognizer
 
         if (checkDataSet3)
         {
-            searchDataSet3(text, oss);
-            return true;
+            if (searchDataSet3(text, oss) == false)
+            {
+                return searchDataSet5(text, oss);
+            }
         }
 
         return false;
@@ -173,7 +175,7 @@ namespace embeddedIntentRecognizer
             return true;
         }
 
-        return false;
+        return searchDataSet5(text, oss);
     }
 
     bool EnglishLanguageModel::searchDataSet5(const std::string &text, std::ostringstream &oss) const
