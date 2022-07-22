@@ -14,11 +14,11 @@ namespace
 
 namespace embeddedIntentRecognizer
 {
-    bool TextProcessor::init(SupportedLanguages language)
+    bool TextProcessor::init(const ApplicationConfig &configuration)
     {
         std::cout << "[INFO]: Initializing Text Processor..\n";
 
-        switch (language)
+        switch (configuration.language)
         {
         case SupportedLanguages::ENGLISH:
         {

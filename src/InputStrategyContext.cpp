@@ -7,11 +7,11 @@
 
 namespace embeddedIntentRecognizer
 {
-    bool InputStrategyContext::init(SupportedLanguages language, SupportedInputs inputType)
+    bool InputStrategyContext::init(const ApplicationConfig &configuration)
     {
         std::cout << "[INFO]: Initializing Input stratetgy..\n";
 
-        switch (inputType)
+        switch (configuration.inputType)
         {
         case SupportedInputs::CLI_INPUT:
         {
@@ -41,7 +41,7 @@ namespace embeddedIntentRecognizer
             return false;
         }
 
-        const bool state = m_inputStrategy->init(language);
+        const bool state = m_inputStrategy->init(configuration.language);
         if (!state)
         {
             std::cout << "[ERROR]: Failed to initialize the selected Input strategy.\n";

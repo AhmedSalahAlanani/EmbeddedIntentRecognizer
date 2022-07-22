@@ -13,7 +13,7 @@ namespace embeddedIntentRecognizer
     class TextProcessor
     {
     public:
-        bool init(SupportedLanguages language);
+        bool init(const ApplicationConfig &configuration);
         void attach(ITextProcessorOutputObserver *observer);
         void detach(ITextProcessorOutputObserver *observer);
         void processText(const std::string &text, InputTextType &inputType);

@@ -24,7 +24,7 @@ namespace embeddedIntentRecognizer
         }
         std::cout << "[VERBOSE]: Configuration was loaded successfully.\n";
 
-        state = m_inputStartegyContext.init(applicationConfig.language, applicationConfig.inputType);
+        state = m_inputStartegyContext.init(applicationConfig);
         if (!state)
         {
             std::cout << "[ERROR]: Failed to initialize Input strategy.\n";
@@ -32,7 +32,7 @@ namespace embeddedIntentRecognizer
         }
         std::cout << "[VERBOSE]: Initializing Input Strategy was successful.\n";
 
-        state = m_textProcessor.init(applicationConfig.language);
+        state = m_textProcessor.init(applicationConfig);
         if (!state)
         {
             std::cout << "[ERROR]: Failed to initialize Input Text Processor.\n";
