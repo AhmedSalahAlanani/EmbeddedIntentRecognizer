@@ -1,0 +1,4 @@
+(.+)(fun fact)(.*)
+(.+)(interesting fact)(.*)
+(.+)(exciting fact)(.*)
+(.+)(fact)(.*)

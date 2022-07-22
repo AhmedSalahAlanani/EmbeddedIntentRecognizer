@@ -1,0 +1,8 @@
+(.+)(forecast)(.*)
+(.+)(weather)(.*)
+(.+)(temperature)(.*)
+(.+)(humidity)(.*)
+(.+)(clouds)(.*)
+(.+)(wind speed)(.*)
+(.+)(showers)(.*)
+(.+)(rain)(.*)
