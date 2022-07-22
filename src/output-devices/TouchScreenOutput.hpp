@@ -8,6 +8,7 @@ namespace embeddedIntentRecognizer
     class TouchScreenOutput : public IOutputDevice
     {
     private:
+        bool init(SupportedLanguages language) override;
         void onNewOutputReady(const std::string &textProcessorOutput) const override;
     };
 
