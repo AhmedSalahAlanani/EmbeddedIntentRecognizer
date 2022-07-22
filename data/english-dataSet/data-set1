@@ -2,5 +2,7 @@
 (what was the)(.+)(.?)
 (what was)(.+)(.?)
 (get me)(.+)
+(show me the)(.+)
 (find)(.+)
-(search for)(.+)
+(search for the)(.+)
+(check the)(.+)

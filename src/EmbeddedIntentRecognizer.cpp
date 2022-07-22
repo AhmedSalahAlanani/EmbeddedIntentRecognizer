@@ -44,13 +44,13 @@ namespace embeddedIntentRecognizer
         addOutputDevices(applicationConfig);
 
         std::cout << "[INFO]: Initialization was successful.\n";
-        clearScreen();
         return true;
     }
 
     bool EmbeddedIntentRecognizer::run()
     {
         std::cout << "[INFO]: Embedded Intent Recognizer has started..\n";
+        clearScreen();
 
         // application logic will go here
         while (true)
