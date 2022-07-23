@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir build && cd build && cmake .. && make -j
+mkdir build -p && cd build && cmake .. && make -j
