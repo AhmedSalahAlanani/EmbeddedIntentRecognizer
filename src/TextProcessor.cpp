@@ -1,19 +1,51 @@
+//!
+//! \file       TextProcessor.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Implementation of the Class TextProcessor
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include <iostream>
 #include <algorithm>
 
 #include "intent-recognition-models/EnglishLanguageModel.hpp"
 #include "TextProcessor.hpp"
 
-namespace
-{
-    // supported commands
-    static constexpr char g_exitCommand[] = "Exit";
-    static constexpr char g_quitCommand[] = "Quit";
-
-} // anonymous namespace
-
 namespace embeddedIntentRecognizer
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
+    namespace
+    {
+        // supported commands
+        static constexpr char g_exitCommand[] = "Exit";
+        static constexpr char g_quitCommand[] = "Quit";
+
+    } // anonymous namespace
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     bool TextProcessor::init(const ApplicationConfig &configuration)
     {
         std::cout << "[INFO]: Initializing Text Processor..\n";
@@ -47,14 +79,14 @@ namespace embeddedIntentRecognizer
         std::cout << "[INFO]: Text Processor was initialized successfully.\n";
         return true;
     }
-
+    //---------------------------------------------------------------------------
     void TextProcessor::attach(ITextProcessorOutputObserver *observer)
     {
         m_observers.emplace_back(observer);
 
         std::cout << "[DEBUG]: Current number of observers = " << m_observers.size() << "\n";
     }
-
+    //---------------------------------------------------------------------------
     void TextProcessor::detach(ITextProcessorOutputObserver *observer)
     {
         const auto it = std::find(m_observers.begin(), m_observers.end(), observer);
@@ -66,7 +98,7 @@ namespace embeddedIntentRecognizer
 
         m_observers.erase(it);
     }
-
+    //---------------------------------------------------------------------------
     void TextProcessor::processText(const std::string &text, InputTextType &inputType)
     {
         if (text == g_exitCommand || text == g_quitCommand)
@@ -77,9 +109,10 @@ namespace embeddedIntentRecognizer
 
         inputType = InputTextType::NORMAL_TEXT;
         m_intentRecognitionModel->getIntent(text, m_lastProcessedOutput);
+        notifyOutputObservers();
     }
-
-    void TextProcessor::notifyOutputObservers() const
+    //---------------------------------------------------------------------------
+    inline void TextProcessor::notifyOutputObservers() const
     {
         for (const auto &observer : m_observers)
         {
@@ -88,3 +121,7 @@ namespace embeddedIntentRecognizer
     }
 
 } // namespace embeddedIntentRecognizer
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------
