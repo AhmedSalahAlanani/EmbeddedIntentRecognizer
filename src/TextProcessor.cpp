@@ -35,6 +35,7 @@ namespace embeddedIntentRecognizer
         static constexpr char g_quitCommand[] = "Quit";
 
     } // anonymous namespace
+
     //---------------------------------------------------------------------------
     // Local function prototypes
     //---------------------------------------------------------------------------

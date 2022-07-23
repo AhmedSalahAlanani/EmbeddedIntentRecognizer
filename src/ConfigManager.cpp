@@ -1,32 +1,65 @@
+//!
+//! \file       ConfigManager.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Implementation of the Class ConfigManager
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
 #include "ConfigManager.hpp"
 
-namespace
-{
-    // language support
-    static constexpr char g_languageSupport[] = "Language Support";
-    static constexpr char g_english[] = "English";
-    static constexpr char g_deutsch[] = "Deutsch";
-
-    // input devices
-    static constexpr char g_inputDevice[] = "Input Device";
-    static constexpr char g_cliInput[] = "CLI";
-    static constexpr char g_touchScreenInput[] = "Touch Screen";
-    static constexpr char g_voiceInput[] = "Voice Input";
-
-    // output devices
-    static constexpr char g_outputDevices[] = "Output Devices";
-    static constexpr char g_cliOutput[] = "CLI";
-    static constexpr char g_touchScreenOutput[] = "Touch Screen";
-    static constexpr char g_voiceOutput[] = "Voice Output";
-
-} // anonymous namespace
-
 namespace embeddedIntentRecognizer
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
+    namespace
+    {
+        // language support
+        static constexpr char g_languageSupport[] = "Language Support";
+        static constexpr char g_english[] = "English";
+        static constexpr char g_deutsch[] = "Deutsch";
+
+        // input devices
+        static constexpr char g_inputDevice[] = "Input Device";
+        static constexpr char g_cliInput[] = "CLI";
+        static constexpr char g_touchScreenInput[] = "Touch Screen";
+        static constexpr char g_voiceInput[] = "Voice Input";
+
+        // output devices
+        static constexpr char g_outputDevices[] = "Output Devices";
+        static constexpr char g_cliOutput[] = "CLI";
+        static constexpr char g_touchScreenOutput[] = "Touch Screen";
+        static constexpr char g_voiceOutput[] = "Voice Output";
+
+    } // anonymous namespace
+
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     bool ConfigManager::loadConfig(ApplicationConfig &configuration, const char configFilePath[]) const
     {
         std::cout << "[INFO]: Loading Application Configuration..\n";
@@ -41,7 +74,7 @@ namespace embeddedIntentRecognizer
         std::cout << "[VERBOSE]: Reading Application Configuration was successful.\n";
         return true;
     }
-
+    //---------------------------------------------------------------------------
     bool ConfigManager::readConfig(ApplicationConfig &configuration, const char configFilePath[]) const
     {
         std::ostringstream documentBuffer;
@@ -94,7 +127,7 @@ namespace embeddedIntentRecognizer
 
         return true;
     }
-
+    //---------------------------------------------------------------------------
     bool ConfigManager::fillLanguageConfiguration(const std::string &inLanguage, SupportedLanguages &language) const
     {
         if (inLanguage == g_english)
@@ -111,7 +144,7 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
-
+    //---------------------------------------------------------------------------
     bool ConfigManager::fillInputDeviceConfiguration(const std::string &inInputDevice, SupportedInputs &inputDevice) const
     {
         if (inInputDevice == g_cliInput)
@@ -134,7 +167,7 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
-
+    //---------------------------------------------------------------------------
     bool ConfigManager::fillOutputDeviceConfiguration(const rapidjson::Value::ConstArray &outDevices, ApplicationConfig &configuration) const
     {
         bool foundOutputDevice = false;
@@ -163,7 +196,7 @@ namespace embeddedIntentRecognizer
 
         return foundOutputDevice;
     }
-
+    //---------------------------------------------------------------------------
     inline rapidjson::Value::ConstMemberIterator ConfigManager::getMember(const rapidjson::Value &itrValue,
                                                                           const std::string &member) const
     {
@@ -171,3 +204,7 @@ namespace embeddedIntentRecognizer
     }
 
 } // namespace embeddedIntentRecognizer
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------

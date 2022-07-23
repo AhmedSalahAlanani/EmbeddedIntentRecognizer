@@ -54,7 +54,7 @@ namespace embeddedIntentRecognizer
         //!
         //! \brief Initialize the Text Processor Module
         //!
-        //! \param applicationConfig [in] - the application configuration
+        //! \param configuration [in] - the application configuration
         //!
         //! \return true  - if initialization was successful,
         //!         false - otherwise
