@@ -1,3 +1,14 @@
+//!
+//! \file       EmbeddedIntentRecognizer.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Implementation of the Class EmbeddedIntentRecognizer
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -11,6 +22,29 @@
 
 namespace embeddedIntentRecognizer
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     bool EmbeddedIntentRecognizer::init()
     {
         std::cout << "[INFO]: Starting Application..\n";
@@ -46,7 +80,7 @@ namespace embeddedIntentRecognizer
         std::cout << "[INFO]: Initialization was successful.\n";
         return true;
     }
-
+    //---------------------------------------------------------------------------
     bool EmbeddedIntentRecognizer::run()
     {
         std::cout << "[INFO]: Embedded Intent Recognizer has started..\n";
@@ -69,7 +103,7 @@ namespace embeddedIntentRecognizer
             }
             case InputTextType::NORMAL_TEXT:
             {
-                m_textProcessor.notifyOutputObservers();
+                std::cout << "[VERBOSE]: Text was received.\n";
                 break;
             }
             default:
@@ -82,7 +116,7 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
-
+    //---------------------------------------------------------------------------
     void EmbeddedIntentRecognizer::addOutputDevices(const ApplicationConfig &applicationConfig)
     {
         std::unique_ptr<IOutputDevice> outputDevicePtr;
@@ -124,7 +158,7 @@ namespace embeddedIntentRecognizer
             }
         }
     }
-
+    //---------------------------------------------------------------------------
     inline void EmbeddedIntentRecognizer::clearScreen()
     {
         std::this_thread::sleep_for(std::chrono::seconds{2U});
@@ -137,3 +171,7 @@ namespace embeddedIntentRecognizer
     }
 
 } // namespace embeddedIntentRecognizer
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------

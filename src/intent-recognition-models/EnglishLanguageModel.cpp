@@ -1,3 +1,14 @@
+//!
+//! \file       EnglishLanguageModel.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Implementation of the Class EnglishLanguageModel
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -5,26 +16,48 @@
 
 #include "EnglishLanguageModel.hpp"
 
-namespace
-{
-    // dataSets files' paths
-    static constexpr char g_dataSet1FilePath[] = ENGLISH_DATA_SET1_FILE_PATH;
-    static constexpr char g_dataSet2FilePath[] = ENGLISH_DATA_SET2_FILE_PATH;
-    static constexpr char g_dataSet3FilePath[] = ENGLISH_DATA_SET3_FILE_PATH;
-    static constexpr char g_dataSet4FilePath[] = ENGLISH_DATA_SET4_FILE_PATH;
-    static constexpr char g_dataSet5FilePath[] = ENGLISH_DATA_SET5_FILE_PATH;
-
-    // dataSets outputs in case of a match
-    static constexpr char g_dataSet1MatchOutput[] = "Get";
-    static constexpr char g_dataSet2MatchOutput[] = "Get";
-    static constexpr char g_dataSet3MatchOutput[] = " Fact";
-    static constexpr char g_dataSet4MatchOutput[] = " Weather";
-    static constexpr char g_dataSet5MatchOutput[] = " City";
-
-} // anonymous namespace
-
 namespace embeddedIntentRecognizer
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
+    namespace
+    {
+        // dataSets files' paths
+        static constexpr char g_dataSet1FilePath[] = ENGLISH_DATA_SET1_FILE_PATH;
+        static constexpr char g_dataSet2FilePath[] = ENGLISH_DATA_SET2_FILE_PATH;
+        static constexpr char g_dataSet3FilePath[] = ENGLISH_DATA_SET3_FILE_PATH;
+        static constexpr char g_dataSet4FilePath[] = ENGLISH_DATA_SET4_FILE_PATH;
+        static constexpr char g_dataSet5FilePath[] = ENGLISH_DATA_SET5_FILE_PATH;
+
+        // dataSets outputs in case of a match
+        static constexpr char g_dataSet1MatchOutput[] = "Get";
+        static constexpr char g_dataSet2MatchOutput[] = "Get";
+        static constexpr char g_dataSet3MatchOutput[] = " Fact";
+        static constexpr char g_dataSet4MatchOutput[] = " Weather";
+        static constexpr char g_dataSet5MatchOutput[] = " City";
+
+    } // anonymous namespace
+
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     bool EnglishLanguageModel::loadDataSet()
     {
         if (!fillDataSet(g_dataSet1FilePath, m_dataSet1))
@@ -55,25 +88,7 @@ namespace embeddedIntentRecognizer
 
         return true;
     }
-
-    bool EnglishLanguageModel::fillDataSet(const char filePath[], std::vector<std::string> &dataSet)
-    {
-        std::ifstream file{filePath};
-        if (file.is_open() == false)
-        {
-            std::cout << "[ERROR]: Failed to find: " << filePath << " !.\n";
-            return false;
-        }
-
-        std::string line;
-        while (getline(file, line))
-        {
-            dataSet.emplace_back(line);
-        }
-
-        return true;
-    }
-
+    //---------------------------------------------------------------------------
     void EnglishLanguageModel::getIntent(const std::string &text, std::string &intent) const
     {
         std::ostringstream oss;
@@ -87,7 +102,7 @@ namespace embeddedIntentRecognizer
         oss << ")";
         intent = oss.str();
     }
-
+    //---------------------------------------------------------------------------
     bool EnglishLanguageModel::searchDataSet1(const std::string &text, std::ostringstream &oss) const
     {
         std::cout << "[DEBUG]: Checking DataSet 1..\n";
@@ -111,7 +126,7 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
-
+    //---------------------------------------------------------------------------
     bool EnglishLanguageModel::searchDataSet2(const std::string &text, std::ostringstream &oss) const
     {
         std::cout << "[DEBUG]: Checking DataSet 2..\n";
@@ -137,7 +152,7 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
-
+    //---------------------------------------------------------------------------
     bool EnglishLanguageModel::searchDataSet3(const std::string &text, std::ostringstream &oss) const
     {
         std::cout << "[DEBUG]: Checking DataSet 3..\n";
@@ -153,7 +168,7 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
-
+    //---------------------------------------------------------------------------
     bool EnglishLanguageModel::searchDataSet4(const std::string &text, std::ostringstream &oss) const
     {
         std::cout << "[DEBUG]: Checking DataSet 4..\n";
@@ -177,7 +192,7 @@ namespace embeddedIntentRecognizer
 
         return searchDataSet5(text, oss);
     }
-
+    //---------------------------------------------------------------------------
     bool EnglishLanguageModel::searchDataSet5(const std::string &text, std::ostringstream &oss) const
     {
         std::cout << "[DEBUG]: Checking DataSet 5..\n";
@@ -193,5 +208,27 @@ namespace embeddedIntentRecognizer
 
         return false;
     }
+    //---------------------------------------------------------------------------
+    bool EnglishLanguageModel::fillDataSet(const char filePath[], std::vector<std::string> &dataSet)
+    {
+        std::ifstream file{filePath};
+        if (file.is_open() == false)
+        {
+            std::cout << "[ERROR]: Failed to find: " << filePath << " !.\n";
+            return false;
+        }
+
+        std::string line;
+        while (getline(file, line))
+        {
+            dataSet.emplace_back(line);
+        }
+
+        return true;
+    }
 
 } // namespace embeddedIntentRecognizer
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------

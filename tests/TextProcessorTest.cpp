@@ -116,7 +116,6 @@ namespace embeddedIntentRecognizer_unit_test
         textProcessor.processText(inputText, inputTextType);
         EXPECT_EQ(InputTextType::NORMAL_TEXT, inputTextType);
 
-        textProcessor.notifyOutputObservers();
         EXPECT_STREQ("(Intent: Get Weather)", m_stubTextobserver->getLastTextProcessorOutput().c_str());
     }
 
@@ -126,7 +125,6 @@ namespace embeddedIntentRecognizer_unit_test
         textProcessor.processText(inputText, inputTextType);
         EXPECT_EQ(InputTextType::NORMAL_TEXT, inputTextType);
 
-        textProcessor.notifyOutputObservers();
         EXPECT_STREQ("(Intent: Get Weather City)", m_stubTextobserver->getLastTextProcessorOutput().c_str());
     }
 
@@ -136,7 +134,6 @@ namespace embeddedIntentRecognizer_unit_test
         textProcessor.processText(inputText, inputTextType);
         EXPECT_EQ(InputTextType::NORMAL_TEXT, inputTextType);
 
-        textProcessor.notifyOutputObservers();
         EXPECT_STREQ("(Intent: Get Fact)", m_stubTextobserver->getLastTextProcessorOutput().c_str());
     }
 
