@@ -1,9 +1,31 @@
+//!
+//! \file       ConfigManagerTest.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Unit tests for ConfigManager
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include "gtest/gtest.h"
 
 #include "ConfigManager.hpp"
 
 namespace embeddedIntentRecognizer_unit_test
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
     namespace
     {
         using namespace embeddedIntentRecognizer;
@@ -21,6 +43,20 @@ namespace embeddedIntentRecognizer_unit_test
 
     } // anonymous namespace
 
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    //!
+    //! \class      ConfigManagerTest
+    //!
+    //! \brief      ConfigManagerTest tests.
+    //!
     class ConfigManagerTest : public ::testing::Test
     {
     public:
@@ -34,27 +70,29 @@ namespace embeddedIntentRecognizer_unit_test
 
         ConfigManager configManager;
     };
-
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_invalidFormatConfigFile1)
     {
         EXPECT_FALSE(configManager.loadConfig(appConfig, g_invalidFormat1FilePath));
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_invalidFormatConfigFile2)
     {
         EXPECT_FALSE(configManager.loadConfig(appConfig, g_invalidFormat2FilePath));
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_invalidFormatConfigFil3)
     {
         EXPECT_FALSE(configManager.loadConfig(appConfig, g_invalidFormat3FilePath));
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_invalidFormatConfigFil4)
     {
         EXPECT_FALSE(configManager.loadConfig(appConfig, g_invalidFormat4FilePath));
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_validFormatConfigFile1)
     {
         EXPECT_TRUE(configManager.loadConfig(appConfig, g_validFormat1FilePath));
@@ -65,7 +103,7 @@ namespace embeddedIntentRecognizer_unit_test
         EXPECT_FALSE(appConfig.touchScreenOutput);
         EXPECT_FALSE(appConfig.voiceOutput);
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_validFormatConfigFile2)
     {
         EXPECT_TRUE(configManager.loadConfig(appConfig, g_validFormat2FilePath));
@@ -76,7 +114,7 @@ namespace embeddedIntentRecognizer_unit_test
         EXPECT_FALSE(appConfig.touchScreenOutput);
         EXPECT_FALSE(appConfig.voiceOutput);
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_validFormatConfigFile3)
     {
         EXPECT_TRUE(configManager.loadConfig(appConfig, g_validFormat3FilePath));
@@ -87,7 +125,7 @@ namespace embeddedIntentRecognizer_unit_test
         EXPECT_TRUE(appConfig.touchScreenOutput);
         EXPECT_FALSE(appConfig.voiceOutput);
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(ConfigManagerTest, Test_validFormatConfigFile4)
     {
         EXPECT_TRUE(configManager.loadConfig(appConfig, g_validFormat4FilePath));
@@ -100,3 +138,7 @@ namespace embeddedIntentRecognizer_unit_test
     }
 
 } // namespace embeddedIntentRecognizer_unit_test
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------

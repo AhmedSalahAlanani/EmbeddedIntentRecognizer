@@ -1,3 +1,14 @@
+//!
+//! \file       OutputDevicesTest.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Unit tests for OutputDevices
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include <memory>
 #include "gtest/gtest.h"
 
@@ -8,12 +19,37 @@
 
 namespace embeddedIntentRecognizer_unit_test
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
     namespace
     {
         using namespace embeddedIntentRecognizer;
 
     } // anonymous namespace
 
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    //!
+    //! \class      OutputDevicesTest
+    //!
+    //! \brief      OutputDevicesTest tests.
+    //!
     class OutputDevicesTest : public ::testing::Test
     {
     public:
@@ -25,7 +61,9 @@ namespace embeddedIntentRecognizer_unit_test
 
         std::unique_ptr<IOutputDevice> outputDevice;
     };
-
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     TEST_F(OutputDevicesTest, Test_CliIOutputLanguageSupport)
     {
         outputDevice = std::make_unique<CliOutput>();
@@ -34,7 +72,7 @@ namespace embeddedIntentRecognizer_unit_test
         outputDevice = std::make_unique<CliOutput>();
         EXPECT_FALSE(outputDevice->init(SupportedLanguages::DEUTSCH));
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(OutputDevicesTest, Test_TouchScreenOutputLanguageSupport)
     {
         outputDevice = std::make_unique<TouchScreenOutput>();
@@ -43,7 +81,7 @@ namespace embeddedIntentRecognizer_unit_test
         outputDevice = std::make_unique<TouchScreenOutput>();
         EXPECT_FALSE(outputDevice->init(SupportedLanguages::DEUTSCH));
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(OutputDevicesTest, Test_VoiceOutputLanguageSupport)
     {
         outputDevice = std::make_unique<VoiceOutput>();
@@ -54,3 +92,7 @@ namespace embeddedIntentRecognizer_unit_test
     }
 
 } // namespace embeddedIntentRecognizer_unit_test
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------

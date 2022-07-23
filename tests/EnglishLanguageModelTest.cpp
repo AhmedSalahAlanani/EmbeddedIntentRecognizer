@@ -1,3 +1,14 @@
+//!
+//! \file       EnglishLanguageModelTest.cpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      Unit tests for EnglishLanguageModel
+//!
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
 #include <memory>
 #include "gtest/gtest.h"
 
@@ -5,12 +16,37 @@
 
 namespace embeddedIntentRecognizer_unit_test
 {
+    //---------------------------------------------------------------------------
+    // Defines and Macros
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Typedefs
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Constants
+    //---------------------------------------------------------------------------
     namespace
     {
         using namespace embeddedIntentRecognizer;
 
     } // anonymous namespace
 
+    //---------------------------------------------------------------------------
+    // Local function prototypes
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    // Data
+    //---------------------------------------------------------------------------
+
+    //---------------------------------------------------------------------------
+    //!
+    //! \class      EnglishLanguageModelTest
+    //!
+    //! \brief      EnglishLanguageModelTest tests.
+    //!
     class EnglishLanguageModelTest : public ::testing::Test
     {
     public:
@@ -23,7 +59,9 @@ namespace embeddedIntentRecognizer_unit_test
         std::string intent;
         std::unique_ptr<IIntentRecognitionModel> intentRecognitionModel{std::make_unique<EnglishLanguageModel>()};
     };
-
+    //---------------------------------------------------------------------------
+    // Functions
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_DataSetNotLoaded)
     {
         intentRecognitionModel->getIntent("What is the weather like today?", intent);
@@ -35,7 +73,7 @@ namespace embeddedIntentRecognizer_unit_test
         intentRecognitionModel->getIntent("Tell me an interesting fact.", intent);
         EXPECT_STREQ("(Intent: )", intent.c_str());
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_DataSetLoaded)
     {
         intentRecognitionModel->loadDataSet();
@@ -49,7 +87,7 @@ namespace embeddedIntentRecognizer_unit_test
         intentRecognitionModel->getIntent("Tell me an interesting fact.", intent);
         EXPECT_STREQ("(Intent: Get Fact)", intent.c_str());
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_CaseInsensitivity)
     {
         intentRecognitionModel->loadDataSet();
@@ -63,7 +101,7 @@ namespace embeddedIntentRecognizer_unit_test
         intentRecognitionModel->getIntent("teLL mE An InTeReStiNg FaCt.", intent);
         EXPECT_STREQ("(Intent: Get Fact)", intent.c_str());
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_ExtraSpaces)
     {
         intentRecognitionModel->loadDataSet();
@@ -77,7 +115,7 @@ namespace embeddedIntentRecognizer_unit_test
         intentRecognitionModel->getIntent("Tell me     an     interesting       fact    .", intent);
         EXPECT_STREQ("(Intent: Get Fact)", intent.c_str());
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_SynonymsForWeather)
     {
         intentRecognitionModel->loadDataSet();
@@ -100,7 +138,7 @@ namespace embeddedIntentRecognizer_unit_test
         intentRecognitionModel->getIntent("what was the wind speed this morning?", intent);
         EXPECT_STREQ("(Intent: Get Weather)", intent.c_str());
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_SynonymsForCity)
     {
         intentRecognitionModel->loadDataSet();
@@ -120,7 +158,7 @@ namespace embeddedIntentRecognizer_unit_test
         intentRecognitionModel->getIntent("Show me Paris", intent);
         EXPECT_STREQ("(Intent: Get City)", intent.c_str());
     }
-
+    //---------------------------------------------------------------------------
     TEST_F(EnglishLanguageModelTest, Test_SynonymsForFact)
     {
         intentRecognitionModel->loadDataSet();
@@ -142,3 +180,7 @@ namespace embeddedIntentRecognizer_unit_test
     }
 
 } // namespace embeddedIntentRecognizer_unit_test
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------

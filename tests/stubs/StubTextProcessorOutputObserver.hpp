@@ -1,3 +1,12 @@
+//!
+//! \file       StubTextProcessorOutputObserver.hpp
+//! \author     Ahmed Salah Alanani
+//! \date       20-Jul-2022
+//!
+//! \brief      A stub implementing TextProcessorOutputObserver
+//!
+
+//---------------------------------------------------------------------------
 #ifndef STUB_TEXT_PROCESSOR_OUTPUT_OBSERVER_HPP
 #define STUB_TEXT_PROCESSOR_OUTPUT_OBSERVER_HPP
 
@@ -5,8 +14,31 @@
 #include <string>
 
 #include <iostream>
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+// Includes
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+// Forward Declarations
+//---------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
+//!
+//! \namespace embeddedIntentRecognizer
+//!
+//! \brief Embedded Intent Recognizer namespace
+//!
 namespace embeddedIntentRecognizer
 {
+    //---------------------------------------------------------------------------
+    //!
+    //! \class      StubTextProcessorOutputObserver
+    //!
+    //! \brief      A stub class that implements ITextProcessorOutputObserver
+    //!             to be used in TextProcessor unit tests
+    //!
     class StubTextProcessorOutputObserver : public ITextProcessorOutputObserver
     {
     public:
@@ -29,3 +61,7 @@ namespace embeddedIntentRecognizer
 } // namespace embeddedIntentRecognizer
 
 #endif // STUB_TEXT_PROCESSOR_OUTPUT_OBSERVER_HPP
+
+//---------------------------------------------------------------------------
+// End of File
+//---------------------------------------------------------------------------
