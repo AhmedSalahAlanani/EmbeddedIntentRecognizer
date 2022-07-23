@@ -1,5 +1,5 @@
 //!
-//! \file       main.cpp
+//! \file       src/main.cpp
 //! \author     Ahmed Salah Alanani
 //! \date       20-Jul-2022
 //!
