@@ -1,5 +1,10 @@
-# Embedded Intent Recognizer
-**EmbeddedIntentRecognizer** is a small intent recognition application, where it recognizes the intent of the language. It currently supports CLI in English language for some use cases. However, it was built in a maintainable and flexible way to be extended for supporting multiple languages, input devices, and output devices as well.
+
+
+/**
+
+\mainpage Embedded Intent Recognizer
+
+* **EmbeddedIntentRecognizer** is a small intent recognition application, where it recognizes the intent of the language. It currently supports CLI in English language for some use cases. However, it was built in a maintainable and flexible way to be extended for supporting multiple languages, input devices, and output devices as well.
 
 ## Table of Contents
 - [Embedded Intent Recognizer](#embedded-intent-recognizer)
@@ -93,30 +98,30 @@ $ ./intent-recognizer
 ```
 After that type in the command line any of the following:
 
-* What is the weather like today? => Prints (Intent: Get Weather)
-* What is the weather like in Paris today? => Prints (Intent: Get Weather City)
-* Tell me an interesting fact. => Prints (Intent: Get Fact)
-* wHaT iS tHe wEaThEr lIkE tOdAy? => Prints (Intent: Get Weather)
-* wHaT iS tHe wEaThEr lIkE tOdAy? => Prints (Intent: Get Weather)
-* teLL mE An InTeReStiNg FaCt. => Prints (Intent: Get Fact)
-* What is the     weather     like    today    ? => Prints (Intent: Get Weather)
-* What is the     weather     like      in     Paris    today   ? => Prints (Intent: Get Weather)
-* Tell me     an     interesting       fact    . => Prints (Intent: Get Fact)
-* Get me the weather for today => Prints (Intent: Get Weather)
-* Show me the weather for today => Prints (Intent: Get Weather)
-* Search for the weather for today => Prints (Intent: Get Weather)
-* find if there is rain this afternoon => Prints (Intent: Get Weather)
-* what is the temperature here? => Prints (Intent: Get Weather)
-* what was the wind speed this morning? => Prints (Intent: Get Weather)
-* Show me the city => Prints (Intent: Get City)
-* Show me this city => Prints (Intent: Get City)
-* Show me Berlin => Prints (Intent: Get City)
-* Show me Sofia => Prints (Intent: Get City)
-* Show me Paris => Prints (Intent: Get City)
-* tell me a fun fact. => Prints (Intent: Get Fact)
-* show me something I know nothing about. => Prints (Intent: Get Fact)
-* tell me a fact I didn't know. => Prints (Intent: Get Fact)
-* tell me a fact that's new to me. => Prints (Intent: Get Fact)
+* * What is the weather like today? => Prints (Intent: Get Weather)
+* * What is the weather like in Paris today? => Prints (Intent: Get Weather City)
+* * Tell me an interesting fact. => Prints (Intent: Get Fact)
+* * wHaT iS tHe wEaThEr lIkE tOdAy? => Prints (Intent: Get Weather)
+* * wHaT iS tHe wEaThEr lIkE tOdAy? => Prints (Intent: Get Weather)
+* * teLL mE An InTeReStiNg FaCt. => Prints (Intent: Get Fact)
+* * What is the     weather     like    today    ? => Prints (Intent: Get Weather)
+* * What is the     weather     like      in     Paris    today   ? => Prints (Intent: Get Weather)
+* * Tell me     an     interesting       fact    . => Prints (Intent: Get Fact)
+* * Get me the weather for today => Prints (Intent: Get Weather)
+* * Show me the weather for today => Prints (Intent: Get Weather)
+* * Search for the weather for today => Prints (Intent: Get Weather)
+* * find if there is rain this afternoon => Prints (Intent: Get Weather)
+* * what is the temperature here? => Prints (Intent: Get Weather)
+* * what was the wind speed this morning? => Prints (Intent: Get Weather)
+* * Show me the city => Prints (Intent: Get City)
+* * Show me this city => Prints (Intent: Get City)
+* * Show me Berlin => Prints (Intent: Get City)
+* * Show me Sofia => Prints (Intent: Get City)
+* * Show me Paris => Prints (Intent: Get City)
+* * tell me a fun fact. => Prints (Intent: Get Fact)
+* * show me something I know nothing about. => Prints (Intent: Get Fact)
+* * tell me a fact I didn't know. => Prints (Intent: Get Fact)
+* * tell me a fact that's new to me. => Prints (Intent: Get Fact)
 
 To exit, as instructed in the prompt, you can use:
 ```
@@ -158,11 +163,13 @@ Exit
 The source code is documented with Doxygen formatted comments, the Doxygen generated documentation in **html** format shall be found under the binaries directory after the build finished successfully.
 
 ## Testing
-**EmbeddedIntentRecognizer** comes with unit tests that can be run after building. The tests are executed using:
+* **EmbeddedIntentRecognizer** comes with unit tests that can be run after building. The tests are executed using:
 ```
 $ cd build/tests
 $ ./intent-recognizer-unit-tests
 ```
 
 ## DataSet
-**EmbeddedIntentRecognizer** comes with different dataSets for the currently implemented simple Model. It can be found under: `data`
+* **EmbeddedIntentRecognizer** comes with different dataSets for the currently implemented simple Model. It can be found under: `data`
+
+*/
