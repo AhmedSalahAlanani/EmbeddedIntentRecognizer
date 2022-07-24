@@ -1,9 +1,9 @@
 //!
-//! \file       main.cpp
+//! \file       src/main.cpp
 //! \author     Ahmed Salah Alanani
 //! \date       20-Jul-2022
 //!
-//! \brief      main() file for Embedded Intent Recognizer
+//! \brief      Entry point for Embedded Intent Recognizer
 //!
 
 //---------------------------------------------------------------------------
